@@ -1,4 +1,4 @@
-package com.company;
+package array.adt;
 
 public class App {
 
