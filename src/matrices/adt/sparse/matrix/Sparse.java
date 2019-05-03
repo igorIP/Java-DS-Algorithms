@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Sparse {
     //dimension is row*column
-    private int rows;//number of rows
-    private int columns;
-    private int numNonZeroElements;//number of non-zero elements
+    public int rows;//number of rows
+    public int columns;
+    public int numNonZeroElements;//number of non-zero elements
     Element[] el;//el is pointer to an Object of type Element[] "meaning" (array with objects of type Element)
 
     public Sparse(int rows, int columns, int numNonZeroElements) {
