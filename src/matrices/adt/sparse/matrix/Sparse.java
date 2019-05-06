@@ -45,8 +45,10 @@ public class Sparse {
         if (rows != sparse.rows || columns != sparse.columns) {
             return null;
         }
+
         Sparse sum = new Sparse(rows, columns, numNonZeroElements + sparse.numNonZeroElements);
         i = j = k = 0;
+
         while (i < numNonZeroElements || j < sparse.numNonZeroElements) {
             if (el[i].rowPosition < sparse.el[j].rowPosition) {
                 sum.el[k++] = el[i++];

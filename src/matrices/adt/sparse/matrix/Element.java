@@ -24,8 +24,4 @@ public class Element {
             sparse.el[i].value = sc.nextInt();
         }
     }
-
-    public void AddTwoSparseMatrices(Sparse sparse1, Sparse sparse2){
-
-    }
 }
