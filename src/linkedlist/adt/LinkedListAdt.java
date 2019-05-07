@@ -21,16 +21,29 @@ public class LinkedListAdt {
         }
     }
 
+    public void createAlwaysAddLast(int data) {
+        if (head == null) {
+            head = last = new Node();
+            head.data = data;
+        } else {
+            last.next = new Node();
+            last = last.next;
+            last.data = data;
+        }
+    }
+
     public void display() {
+        System.out.println("===Start");
         Node temp = head;
         while (temp != null) {
             System.out.println(temp.data);
             temp = temp.next;
         }
-        System.out.println("============");
+        System.out.println("===End");
     }
 
-    public boolean searchElement(Node node, int key) {
+    public boolean searchElement(int key) {
+        Node node = head;
         while (node != null) {
             if (key == node.data) return true;
             node = node.next;
@@ -38,17 +51,16 @@ public class LinkedListAdt {
         return false;
     }
 
-    public boolean searchElementMoveToHead(Node node, int key) {
+    public boolean searchElementMoveToHead(int key) {
+        Node node = head;
         Node previous = new Node();
-        Node temp;
 
         while (node != null) {
             if (key == node.data) {
+                if (node == last) last = previous;
                 previous.next = node.next;
-
-                temp = head;
+                node.next = head;
                 head = node;
-                head.next = temp;
                 return true;
             }
             previous = node;
@@ -65,6 +77,13 @@ public class LinkedListAdt {
         head.next = temp;
     }
 
+    public void insertAfterLastNode(int value) {
+        Node temp = new Node();
+        temp.data = value;
+        last.next = temp;
+        last = temp;
+    }
+
     public void insertAfterIndex(int index, int value) {
         Node newNode = new Node();
         Node temp = head;
@@ -78,16 +97,22 @@ public class LinkedListAdt {
         temp.next = newNode;
     }
 
+    public void insertInSortedList(int data) {
+    }
+
     public int printFirstElement() {
+        System.out.println("=_=");
         return head.data;
     }
 
     public int printLastElement() {
+        System.out.println("=_=");
         return last.data;
     }
 
-    public int linkedListLength(Node node) {
-        int sum = 1;
+    public int linkedListLength() {
+        Node node = head;
+        int sum = 0;
         while (node != null) {
             node = node.next;
             sum += 1;
@@ -95,7 +120,8 @@ public class LinkedListAdt {
         return sum;
     }
 
-    public int sumLinkedListElements(Node node) {
+    public int sumLinkedListElements() {
+        Node node = head;
         int sum = 0;
         while (node != null) {
             sum += node.data;
@@ -104,7 +130,8 @@ public class LinkedListAdt {
         return sum;
     }
 
-    public int maxElement(Node node) {
+    public int maxElement() {
+        Node node = head;
         int max = 0;
         while (node != null) {
             if (max < node.data) max = node.data;
