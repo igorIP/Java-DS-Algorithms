@@ -1,5 +1,8 @@
 package linkedlist.adt;
 
+import javax.lang.model.type.NullType;
+import java.util.Arrays;
+
 public class LinkedListAdt {
     public Node head;
     public Node last;
@@ -94,31 +97,6 @@ public class LinkedListAdt {
         temp.next = newNode;
     }
 
-    public void insertInSortedList(int data) {
-        Node newNode = new Node();
-        Node node = head;
-        Node temp = new Node();
-
-        if (data < head.data) {
-            newNode.next = head;
-            head = newNode;
-            newNode.data = data;
-        } else {
-            while (node != null && node.data < data) {
-                temp = node;
-                node = node.next;
-            }
-            newNode.next = node;
-            temp.next = newNode;
-            newNode.data = data;
-
-            if (data > last.data) {
-                last = newNode;
-            }
-        }
-
-    }
-
     public void deleteElement(int index) {
         if (head == null) return;
         Node node = head;
@@ -154,6 +132,65 @@ public class LinkedListAdt {
             if (last.equals(previous.next)) last = previous;
             previous.next = node.next;
             node.next = null;
+        }
+    }
+
+    public void reverseListElements(LinkedListAdt list) {
+        Node node = head;
+        int length = linkedListLength();
+        int[] array = new int[length];
+        int i = 0;
+
+//        for (int i = 0; i < length; i++) {
+//            array[i] = node.data;
+//            node = node.next;
+//        }
+//
+//        node = head;
+//        for (int i = length - 1; i >= 0; i--) {
+//            node.data = array[i];
+//            node = node.next;
+//        }
+
+        while (node != null) {
+            array[i] = node.data;
+            node = node.next;
+            i++;
+        }
+
+        i--;
+        node = head;
+
+        while (node != null) {
+            node.data = array[i];
+            node = node.next;
+            i--;
+        }
+    }
+
+    public void reverseListLinksSlidingPointers() {
+        Node node = head;
+        Node previous = null;
+        Node temp = null;
+        last = head;
+
+        while (node != null) {
+            temp = previous;
+            previous = node;
+            node = node.next;
+
+            previous.next = temp;
+        }
+        head = previous;
+    }
+
+    public void reverseListLinksRecursion(Node prev, Node current) {
+        last = head;
+        if (current != null) {
+            reverseListLinksRecursion(current, current.next);
+            current.next = prev;
+        } else {
+            head = prev;
         }
     }
 
@@ -197,6 +234,9 @@ public class LinkedListAdt {
         return max;
     }
 
+
+    //Methods for Sorted LinkedList
+
     public boolean isSorted() {
         Node node = head;
         //with use of OBJ
@@ -210,7 +250,7 @@ public class LinkedListAdt {
 //        }
 //        return true;
 
-        //with use of primitive int
+        //with use of primitive int, basically is like using the =previous pointer=
         int x = -1;
         while (node != null) {
             if (x > node.data) return false;
@@ -219,4 +259,46 @@ public class LinkedListAdt {
         }
         return true;
     }
+
+    public void insertInSortedList(int data) {
+        Node newNode = new Node();
+        Node node = head;
+        Node temp = new Node();
+
+        if (data < head.data) {
+            newNode.next = head;
+            head = newNode;
+            newNode.data = data;
+        } else {
+            while (node != null && node.data < data) {
+                temp = node;
+                node = node.next;
+            }
+            newNode.next = node;
+            temp.next = newNode;
+            newNode.data = data;
+
+            if (data > last.data) {
+                last = newNode;
+            }
+        }
+
+    }
+
+    public void deleteDuplicatesInSortedList() {
+        Node node = head;
+        Node previous = new Node();
+
+        while (node != null) {
+            if (previous.data == node.data) {
+                previous.next = node.next;
+                node.next = null;
+                node = previous.next;
+            } else {
+                previous = node;
+                node = node.next;
+            }
+        }
+    }
+
 }

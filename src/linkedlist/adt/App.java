@@ -56,6 +56,36 @@ public class App {
         System.out.println(myList.isSorted());
         mySortedList.display();
         System.out.println(mySortedList.isSorted());
+
+        mySortedList.display();
+        mySortedList.insertInSortedList(22);
+        mySortedList.insertInSortedList(55);
+        mySortedList.display();
+        mySortedList.deleteDuplicatesInSortedList();
+        mySortedList.display();
+
+        myList.display();
+        myList.reverseListElements(myList);
+        myList.display();
+        myList.reverseListElements(myList);
+
+        System.out.println("reverseListLinksSlidingPointers");
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
+        myList.reverseListLinksSlidingPointers();
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
+
+        System.out.println("reverseListLinksRecursion");
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
+        myList.reverseListLinksRecursion(myList.last.next, myList.head);
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
     }
 }
 
