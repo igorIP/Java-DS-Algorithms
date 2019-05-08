@@ -119,6 +119,44 @@ public class LinkedListAdt {
 
     }
 
+    public void deleteElement(int index) {
+        if (head == null) return;
+        Node node = head;
+        Node previous = new Node();
+
+        if (index == 0) head = head.next;
+        else if (head.next == null) head = null;
+        else {
+            int count = 0;
+            while (node != null) {
+                if (count == index) {
+                    previous.next = node.next;
+                    node.next = null;
+                }
+                count += 1;
+                previous = node;
+                if (last.equals(previous.next)) last = previous;
+                node = node.next;
+            }
+        }
+    }
+
+    public void deleteElementIteration(int index) {
+        Node node = head;
+        Node previous = new Node();
+
+        if (index == 0) head = head.next;
+        else {
+            for (int i = 0; i <= index - 1; i++) {
+                previous = node;
+                node = node.next;
+            }
+            if (last.equals(previous.next)) last = previous;
+            previous.next = node.next;
+            node.next = null;
+        }
+    }
+
     public int printFirstElement() {
         System.out.println("=_=");
         return head.data;
@@ -157,5 +195,28 @@ public class LinkedListAdt {
             node = node.next;
         }
         return max;
+    }
+
+    public boolean isSorted() {
+        Node node = head;
+        //with use of OBJ
+//        while (node != null) {
+//            if (node.data < node.next.data) {
+//                if (node.next.next == null) {
+//                    break;
+//                }
+//                node = node.next;
+//            } else return false;
+//        }
+//        return true;
+
+        //with use of primitive int
+        int x = -1;
+        while (node != null) {
+            if (x > node.data) return false;
+            x = node.data;
+            node = node.next;
+        }
+        return true;
     }
 }
