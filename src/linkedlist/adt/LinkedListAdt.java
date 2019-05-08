@@ -5,19 +5,16 @@ public class LinkedListAdt {
     public Node last;
 
     public void create(int[] array) {
-        head = new Node();
-        last = new Node();
+        head = last = new Node();
 
-        head.data = array[0];
-        head.next = null;
-        last = head;
+        last.data = array[0];
+        last.next = null;
 
         for (int i = 1; i < array.length; i++) {
-            Node temp = new Node();
-            last.next = temp;
-            last = temp;
-            temp.next = null;
-            temp.data = array[i];
+            Node newNode = new Node();
+            last.next = newNode;
+            newNode.data = array[i];
+            last = newNode;
         }
     }
 
@@ -98,6 +95,28 @@ public class LinkedListAdt {
     }
 
     public void insertInSortedList(int data) {
+        Node newNode = new Node();
+        Node node = head;
+        Node temp = new Node();
+
+        if (data < head.data) {
+            newNode.next = head;
+            head = newNode;
+            newNode.data = data;
+        } else {
+            while (node != null && node.data < data) {
+                temp = node;
+                node = node.next;
+            }
+            newNode.next = node;
+            temp.next = newNode;
+            newNode.data = data;
+
+            if (data > last.data) {
+                last = newNode;
+            }
+        }
+
     }
 
     public int printFirstElement() {
