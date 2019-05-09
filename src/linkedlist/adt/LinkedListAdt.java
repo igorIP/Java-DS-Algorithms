@@ -1,7 +1,5 @@
 package linkedlist.adt;
 
-import javax.lang.model.type.NullType;
-import java.util.Arrays;
 
 public class LinkedListAdt {
     public Node head;
@@ -301,4 +299,52 @@ public class LinkedListAdt {
         }
     }
 
+    //Concatenating "meaning"-joining-append two linked lists
+
+    public void appendTwoLists(LinkedListAdt list1, LinkedListAdt list2) {
+        list1.last.next = list2.head;
+        list1.last = list2.last;
+        list2.head = null;
+        list2.last = null;
+    }
+
+    public void mergeTwoSortedLists(LinkedListAdt list1, LinkedListAdt list2) {
+        Node node1 = list1.head;
+        Node node2 = list2.head;
+        Node lastNode;
+        Node node3Head;
+
+        if (node1.data < node2.data) {
+            node3Head = lastNode = node1;
+            node1 = node1.next;
+            lastNode.next = null;
+        } else {
+            node3Head = lastNode = node2;
+            node2 = node2.next;
+            lastNode.next = null;
+        }
+        while (node1 != null && node2 != null) {
+            if (node1.data < node2.data) {
+                lastNode.next = node1;
+                lastNode = node1;
+                node1 = node1.next;
+                lastNode.next = null;
+            } else {
+                lastNode.next = node2;
+                lastNode = node2;
+                node2 = node2.next;
+                lastNode.next = null;
+            }
+        }
+
+        if (node1 != null) {
+            lastNode.next = node1;
+            list1.last = node1;
+        } else {
+            lastNode.next = node2;
+            list1.last = node2;
+        }
+
+        head = node3Head;
+    }
 }

@@ -86,6 +86,27 @@ public class App {
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
+
+        System.out.println("appendTwoLists");
+        myList.deleteElement(2);
+        LinkedListAdt myList1 = new LinkedListAdt();
+        myList1.createAlwaysAddLast(12);
+        myList1.createAlwaysAddLast(25);
+        myList1.createAlwaysAddLast(55);
+        myList1.display();
+        //myList1.appendTwoLists(myList, myList1);
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
+
+
+        System.out.println("Merge two lists");
+        myList.display();
+        myList1.display();
+        myList.mergeTwoSortedLists(myList, myList1);
+        myList.display();
+        System.out.println(myList.printFirstElement());
+        System.out.println(myList.printLastElement());
     }
 }
 
