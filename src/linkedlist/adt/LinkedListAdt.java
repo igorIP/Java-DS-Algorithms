@@ -2,10 +2,15 @@ package linkedlist.adt;
 
 
 public class LinkedListAdt {
-    public Node head;
-    public Node last;
+    private Node head;
+    private Node last;
 
-    public void create(int[] array) {
+    public LinkedListAdt() {
+        this.head = null;
+        this.last = null;
+    }
+
+    public LinkedListAdt(int[] array) {
         head = last = new Node();
 
         last.data = array[0];
@@ -346,5 +351,27 @@ public class LinkedListAdt {
         }
 
         head = node3Head;
+    }
+
+    public boolean isLoop() {
+        Node node, match;
+        node = match = head;
+
+//        while (match != null) {
+//            match = match.next;
+//            if (match == null) return false;
+//            match = match.next;
+//            node = node.next;
+//            if (match == node) return true;
+//        }
+//        return false;
+
+        do {
+            node = node.next;
+            match = match.next;
+            match = match != null ? match.next : match;
+        } while (match != null && match != node);
+        if (node == match) return true;
+        return false;
     }
 }

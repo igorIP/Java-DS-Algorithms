@@ -4,8 +4,8 @@ public class App {
     public static void main(String[] args) {
 
         int[] myArr = {11, 22, 33, 44, 55,};
-        LinkedListAdt myList = new LinkedListAdt();
-        myList.create(myArr);
+        LinkedListAdt myList = new LinkedListAdt(myArr);
+        //myList.create(myArr);
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
@@ -29,9 +29,9 @@ public class App {
         myEmptyList.display();
         System.out.println(myEmptyList.printFirstElement());
         System.out.println(myEmptyList.printLastElement());
-        LinkedListAdt mySortedList = new LinkedListAdt();
         int[] arr = {11, 22, 33, 55};
-        mySortedList.create(arr);
+        LinkedListAdt mySortedList = new LinkedListAdt(arr);
+        //mySortedList.create(arr);
         mySortedList.display();
         System.out.println(mySortedList.printFirstElement());
         System.out.println(mySortedList.printLastElement());
@@ -77,12 +77,13 @@ public class App {
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
+        myList.reverseListLinksSlidingPointers();
 
         System.out.println("reverseListLinksRecursion");
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
-        myList.reverseListLinksRecursion(myList.last.next, myList.head);
+        //myList.reverseListLinksRecursion(myList.last.next, myList.head);
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
@@ -107,6 +108,11 @@ public class App {
         myList.display();
         System.out.println(myList.printFirstElement());
         System.out.println(myList.printLastElement());
+
+        System.out.println("Has Loop");
+        myList.insertInSortedList(46);
+        myList.display();
+        System.out.println(myList.isLoop());
     }
 }
 
