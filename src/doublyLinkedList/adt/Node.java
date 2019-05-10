@@ -1,4 +1,4 @@
-package doublyLinkedList;
+package doublyLinkedList.adt;
 
 public class Node {
     Node previous;

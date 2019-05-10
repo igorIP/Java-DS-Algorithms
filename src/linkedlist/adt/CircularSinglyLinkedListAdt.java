@@ -1,12 +1,12 @@
 package linkedlist.adt;
 
-public class CircularSinglyLinkedList {
+public class CircularSinglyLinkedListAdt {
     public Node head;
     private Node last;
     //private int flag = 0;
 
 
-    public CircularSinglyLinkedList(int[] array) {
+    public CircularSinglyLinkedListAdt(int[] array) {
         if (array.length == 0) return;
         this.head = new Node();
         this.head.data = array[0];

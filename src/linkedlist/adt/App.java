@@ -116,7 +116,7 @@ public class App {
 
         System.out.println("Circular Singly Linked List");
         int[] myArr1 = {11, 22, 33};
-        CircularSinglyLinkedList myCircularList = new CircularSinglyLinkedList(myArr1);
+        CircularSinglyLinkedListAdt myCircularList = new CircularSinglyLinkedListAdt(myArr1);
         myCircularList.display();
         //myCircularList.displayRecursion(myCircularList.head);
 
