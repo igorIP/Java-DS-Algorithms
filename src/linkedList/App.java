@@ -1,4 +1,4 @@
-package linkedlist.adt;
+package linkedList;
 
 public class App {
     public static void main(String[] args) {

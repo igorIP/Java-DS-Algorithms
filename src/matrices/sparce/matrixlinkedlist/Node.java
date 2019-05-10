@@ -1,4 +1,4 @@
-package matrices.adt.sparce.matrixlinkedlist;
+package matrices.sparce.matrixlinkedlist;
 
 public class Node {
     public int column;

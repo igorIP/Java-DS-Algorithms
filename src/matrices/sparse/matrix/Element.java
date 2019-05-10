@@ -1,4 +1,4 @@
-package matrices.adt.sparse.matrix;
+package matrices.sparse.matrix;
 
 import java.util.Scanner;
 

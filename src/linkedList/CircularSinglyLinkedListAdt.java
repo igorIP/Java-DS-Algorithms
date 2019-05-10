@@ -1,4 +1,4 @@
-package linkedlist.adt;
+package linkedList;
 
 public class CircularSinglyLinkedListAdt {
     public Node head;

@@ -1,4 +1,4 @@
-package doublyLinkedList.adt;
+package doublyLinkedList;
 
 public class DoublyLinkedListAdt {
     Node head;

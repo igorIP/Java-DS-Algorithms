@@ -1,4 +1,4 @@
-package matrices.adt.sparce.matrixlinkedlist;
+package matrices.sparce.matrixlinkedlist;
 
 import java.util.Scanner;
 

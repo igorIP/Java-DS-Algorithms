@@ -1,4 +1,4 @@
-package array.adt;
+package array;
 
 import java.util.List;
 

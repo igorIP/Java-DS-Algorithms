@@ -1,4 +1,4 @@
-package matrices.adt;
+package matrices;
 
 public class LowerTriangularRowMaping {
     private int[] arr;

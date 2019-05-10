@@ -1,4 +1,4 @@
-package linkedlist.adt;
+package linkedList;
 
 public class Node {
     public int data;
