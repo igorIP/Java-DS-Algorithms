@@ -3,7 +3,7 @@ package linkedlist.adt;
 public class App {
     public static void main(String[] args) {
 
-        int[] myArr = {11, 22, 33, 44, 55,};
+        int[] myArr = {11, 22, 33, 44, 55};
         LinkedListAdt myList = new LinkedListAdt(myArr);
         //myList.create(myArr);
         myList.display();
@@ -113,6 +113,18 @@ public class App {
         myList.insertInSortedList(46);
         myList.display();
         System.out.println(myList.isLoop());
+
+        System.out.println("Circular Singly Linked List");
+        int[] myArr1 = {11,22,33};
+        CircularSinglyLinkedList myCircularList = new CircularSinglyLinkedList(myArr1);
+        myCircularList.display();
+        //myCircularList.displayRecursion(myCircularList.head);
+
+        System.out.println("Insert");
+        System.out.println(myCircularList.length());
+        myCircularList.insert(111,4);
+        myCircularList.display();
+
     }
 }
 

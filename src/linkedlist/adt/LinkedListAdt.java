@@ -11,16 +11,16 @@ public class LinkedListAdt {
     }
 
     public LinkedListAdt(int[] array) {
-        head = last = new Node();
+        this.head = last = new Node();
 
-        last.data = array[0];
-        last.next = null;
+        this.last.data = array[0];
+        this.last.next = null;
 
         for (int i = 1; i < array.length; i++) {
             Node newNode = new Node();
-            last.next = newNode;
+            this.last.next = newNode;
             newNode.data = array[i];
-            last = newNode;
+            this.last = newNode;
         }
     }
 
