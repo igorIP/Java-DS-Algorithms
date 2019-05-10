@@ -115,14 +115,19 @@ public class App {
         System.out.println(myList.isLoop());
 
         System.out.println("Circular Singly Linked List");
-        int[] myArr1 = {11,22,33};
+        int[] myArr1 = {11, 22, 33};
         CircularSinglyLinkedList myCircularList = new CircularSinglyLinkedList(myArr1);
         myCircularList.display();
         //myCircularList.displayRecursion(myCircularList.head);
 
         System.out.println("Insert");
         System.out.println(myCircularList.length());
-        myCircularList.insert(111,4);
+        myCircularList.insert(111, 3);
+        myCircularList.display();
+
+        System.out.println("Delete Element");
+        myCircularList.display();
+        myCircularList.deleteElement(2);
         myCircularList.display();
 
     }

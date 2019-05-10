@@ -67,6 +67,7 @@ public class CircularSinglyLinkedList {
             if (head == null) {
                 head = newNode;
                 head.next = head;
+                last = head;
             } else {
                 last.next = newNode;
                 newNode.next = head;
@@ -76,8 +77,35 @@ public class CircularSinglyLinkedList {
             for (int i = 0; i < index - 1; i++) {
                 node = node.next;
             }
+            if (node == last) last = newNode;
             newNode.next = node.next;
             node.next = newNode;
+        }
+    }
+
+    public void deleteElement(int index) {
+        Node node = head;
+        Node previous;
+        int count = 1;
+        if (index < 1 || index > length()) return;
+        else if (index == 1) {
+            if (head.next == null) {
+                head = null;
+                last = null;
+            } else {
+                last.next = head.next;
+                head.next = null;
+                head = last.next;
+            }
+        } else {
+            do {
+                count++;
+                previous = node;
+                node = node.next;
+            } while (index != count);
+            previous.next = node.next;
+            node.next = null;
+            if (index == length()) last = previous;
         }
     }
 }
