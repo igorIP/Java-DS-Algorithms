@@ -25,11 +25,11 @@ public class DoublyLinkedListAdt {
     }
 
     public void insert(int index, int value) {
-        if (index < 0 || index > this.length()) return;
         Node node = first;
         Node newNode = new Node();
         int count = 0;
 
+        if (index < 0 || index > this.length()) return;
         if (index == 0) {
             newNode.data = value;
             newNode.next = first;
@@ -42,7 +42,7 @@ public class DoublyLinkedListAdt {
             last.next = newNode;
             last = newNode;
         } else {
-            for (int i = 1; i < index ; i++) {
+            for (int i = 1; i < index; i++) {
                 node = node.next;
             }
             newNode.data = value;
@@ -73,5 +73,31 @@ public class DoublyLinkedListAdt {
             node = node.next;
         }
         return count;
+    }
+
+    public void delete(int index) {
+        Node node = first;
+        if (index > 0 && index <= this.length()) {
+            if (index == 1) {
+                if (first.next == null) {
+                    first = null;
+                    last = null;
+                } else {
+                    node = first.next;
+                    node.previous = null;
+                    first.next = null;
+                    first = node;
+                    if (last == first) last = first;
+                }
+            } else {
+                for (int i = 1; i < index; i++) {
+                    node = node.next;
+                }
+                node.previous.next = node.next;
+                if (node.next != null) node.next.previous = node.previous;
+                node.previous = null;
+                node.next = null;
+            }
+        }
     }
 }
