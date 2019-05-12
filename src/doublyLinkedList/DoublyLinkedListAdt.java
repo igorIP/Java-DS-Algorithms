@@ -93,11 +93,26 @@ public class DoublyLinkedListAdt {
                 for (int i = 1; i < index; i++) {
                     node = node.next;
                 }
+                if (node == last) last = node.previous;
                 node.previous.next = node.next;
                 if (node.next != null) node.next.previous = node.previous;
                 node.previous = null;
                 node.next = null;
             }
+        }
+    }
+
+    public void reverseList() {
+        Node node = first;
+        Node temp = first;
+        first = last;
+        last = temp;
+
+        while (node != null) {
+            temp = node.next;
+            node.next = node.previous;
+            node.previous = temp;
+            node = node.previous;
         }
     }
 }
