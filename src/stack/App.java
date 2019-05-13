@@ -13,11 +13,12 @@ public class App {
         System.out.println(myStack1.isEmpty());
         System.out.println(myStack1.isFull());
         System.out.println(myStack1.peek(0));
+        System.out.println(myStack1.peek(1));
 
         myStack1.push(22);
         myStack1.push(33);
         myStack1.display();
-        System.out.println(myStack1.peek(2));
+        System.out.println(myStack1.peek(1));
 
         myStack1.push(33);
         myStack1.push(44);
@@ -29,7 +30,7 @@ public class App {
         myStack1.push(33);
         myStack1.display();
         System.out.println(myStack1.isFull());
-        System.out.println(myStack1.peek(9));
+        System.out.println(myStack1.peek(10));
 
         System.out.println(myStack1.stackTop());
         System.out.println(myStack1.pop());

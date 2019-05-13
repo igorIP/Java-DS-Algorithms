@@ -21,19 +21,25 @@ public class StackAdt {
     }
 
     public int pop() {
-        if (this.isEmpty()) return -1;
+        if (top == -1) return -1;
         int temp = dataArray[top];
         dataArray[top--] = 0;
         return temp;
     }
 
-    public int peek(int index) {
-        if (!(this.isEmpty()) && index < size && index > -1) return dataArray[index];
+    //position 0 is first element in the stack BUT last element int the array and vs.
+    //formula for finding index of element in the array using the given position and the top is:
+    //index = top - position + 1
+    public int peek(int position) {
+        if (top - position + 1 < 0) {
+            int index = top - position + 1;
+            return dataArray[index];
+        }
         return -1;
     }
 
     public int stackTop() {
-        return top;
+        return dataArray[top];
     }
 
     public boolean isEmpty() {
