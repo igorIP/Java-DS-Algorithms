@@ -38,5 +38,18 @@ public class App {
         System.out.println(myStack1.pop());
         System.out.println(myStack1.stackTop());
         myStack1.display();
+
+        //Stack using Linked List
+        System.out.println("\n" + "Stack using Linked List" + "\n");
+        StackAdtLinkedList myStackList = new StackAdtLinkedList();
+        System.out.println(myStackList.isEmpty());
+        myStackList.push(11);
+        myStackList.push(22);
+        myStackList.push(33);
+        myStackList.display();
+        System.out.println(myStackList.pop());
+        myStackList.display();
+        System.out.println(myStackList.peek(3));
+        System.out.println(myStackList.stackPop());
     }
 }
