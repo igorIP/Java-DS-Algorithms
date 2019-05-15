@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 public class Tree {
 
-    public Node root;
-    //private Queue treeLinkedList;
+    private Node root;
 
     public Tree() {
         this.root = null;
-        //this.treeLinkedList = new Queue();
     }
 
     public void create() {
@@ -53,17 +51,70 @@ public class Tree {
     }
 
     //Tree traversal: pre-order, in-order, iterative
+    public void preorder() {
+        preorder(root);
+    }
+
     public void preorder(Node node) {
         if (node != null) {
-            System.out.println("left");
             System.out.println(node.data);
             preorder(node.leftChild);
-            System.out.println("right");
             preorder(node.rightChild);
         }
     }
 
-    public void display() {
+    public void postorder() {
+        postorder(root);
     }
+
+    public void postorder(Node node) {
+        if (node != null) {
+            postorder(node.leftChild);
+            postorder(node.rightChild);
+            System.out.println(node.data);
+        }
+    }
+
+    public void inorder() {
+        inorder(root);
+    }
+
+    public void inorder(Node node) {
+        if (node != null) {
+            postorder(node.leftChild);
+            System.out.println(node.data);
+            postorder(node.rightChild);
+        }
+    }
+
+    public void levelorder() {
+        levelorder(root);
+    }
+
+    public void levelorder(Node root) {
+        Queue queue = new Queue();
+        System.out.println(root.data);
+        queue.enQueue(root);
+        while (!queue.isEmpty()) {
+            root = queue.deQueue();
+            if (root.leftChild != null) {
+                queue.enQueue(root.leftChild);
+            }
+            if (root.rightChild != null) {
+                queue.enQueue(root.rightChild);
+            }
+        }
+    }
+
+    //for refactoring
+//    public int height(Node root) {
+//        int x = 0;
+//        int y = 0;
+//        if (root == null) return 0;
+//        x = height(root.leftChild);
+//        y = height(root.rightChild);
+//        if (x > y) return x + 1;
+//        else return y + 1;
+//    }
 
 }
