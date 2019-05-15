@@ -1,6 +1,8 @@
 package stack;
 
-public class StackAdtLinkedList {
+import java.util.ArrayList;
+
+public class StackAdtLinkedList<T> {
 
     private Node top;
     //Important; Insertion in stack created with linked list,
@@ -10,15 +12,15 @@ public class StackAdtLinkedList {
         this.top = null;
     }
 
-    public void push(int data) {
+    public void push(T data) {
         Node newNode = new Node();
         newNode.data = data;
         newNode.next = top;
         top = newNode;
     }
 
-    public int pop() {
-        int value = -1;
+    public T pop() {
+        T value = null;
         if (top != null) {
             Node node = top;
             top = top.next;
@@ -29,8 +31,8 @@ public class StackAdtLinkedList {
         return value;
     }
 
-    public int peek(int position) {
-        int pos = -1;
+    public T peek(int position) {
+        T pos = null;
         Node node = top;
         if (top != null) {
             for (int i = 1; i < position; i++) {
@@ -42,17 +44,19 @@ public class StackAdtLinkedList {
         return pos;
     }
 
-    public int stackPop() {
+    public T stackPop() {
         if (top != null) return top.data;
-        return -1;
+        return null;
     }
 
     public void display() {
         System.out.println("Start");
         Node node = top;
+        T temp;
         if (top != null) {
             while (node != null) {
-                System.out.println(node.data);
+                temp = node.data;
+                System.out.println(temp);
                 node = node.next;
             }
         }
@@ -63,9 +67,25 @@ public class StackAdtLinkedList {
         return top == null;
     }
 
+    //method for parentheses matching
+    public boolean isBalanced(ArrayList<Character> charArrayList) {
+        int ch;
+        for (Character arrayItem : charArrayList) {
+            if (arrayItem == '(' || arrayItem == '{' || arrayItem == '[') push((T) arrayItem);
+
+            else if (arrayItem == ')' || arrayItem == '}' || arrayItem == ']') {
+                if (top == null) return false;
+            } else {
+                ch = (char) stackPop();
+                if (ch + 1 == (int) arrayItem) pop();
+                else if (ch + 2 == (int) arrayItem) pop();
+            }
+        }
+        return top == null;
+    }
 
     private class Node {
-        private int data;
+        private T data;
         private Node next;
     }
 }

@@ -1,7 +1,10 @@
 package stack;
 
+import java.util.ArrayList;
+
 public class App {
     public static void main(String[] args) {
+
         StackAdt myStack1 = new StackAdt(10);
         myStack1.display();
         System.out.println(myStack1.isEmpty());
@@ -51,5 +54,39 @@ public class App {
         myStackList.display();
         System.out.println(myStackList.peek(3));
         System.out.println(myStackList.stackPop());
+
+        System.out.println("\n" + "Stack using Linked List" + "\n");
+        System.out.println("\n" + "Strings" + "\n");
+        StackAdtLinkedList<String> StringStackList = new StackAdtLinkedList<>();
+        System.out.println(myStackList.isEmpty());
+        StringStackList.push("!");
+        StringStackList.push("whats up ");
+        StringStackList.push("Hey");
+        StringStackList.display();
+        System.out.println(StringStackList.pop());
+        StringStackList.display();
+        System.out.println(StringStackList.peek(3));
+        System.out.println(StringStackList.stackPop());
+
+        System.out.println("Parenthesis matching");
+        StackAdtLinkedList<Character> myStackChar = new StackAdtLinkedList<>();
+        ArrayList<Character> myArrayList1 = new ArrayList<>();
+        myArrayList1.add('}');
+
+        myArrayList1.add('(');
+        myArrayList1.add('(');
+        myArrayList1.add('a');
+        myArrayList1.add('+');
+        myArrayList1.add('b');
+        myArrayList1.add(')');
+        myArrayList1.add('*');
+        myArrayList1.add('(');
+        myArrayList1.add('c');
+        myArrayList1.add('-');
+        myArrayList1.add('d');
+        myArrayList1.add(')');
+        myArrayList1.add(')');
+        System.out.println(myStackChar.isBalanced(myArrayList1));
+        //myStackChar.display();
     }
 }
