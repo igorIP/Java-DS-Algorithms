@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Tree {
 
@@ -12,7 +13,7 @@ public class Tree {
 
     public void create() {
         Node newNode;
-        Node p;
+        Node node;
         int x;
 
         Queue inputQueue = new Queue();
@@ -27,30 +28,30 @@ public class Tree {
         inputQueue.enQueue(root);
 
         while (!inputQueue.isEmpty()) {
-            p = inputQueue.deQueue();
-            System.out.println("Enter left child for: " + p.data + "\n");
+            node = inputQueue.deQueue();
+            System.out.println("Enter left child for: " + node.data + "\n");
             x = scan.nextInt();
             if (x != -1) {
                 newNode = new Node();
                 newNode.data = x;
                 newNode.leftChild = newNode.rightChild = null;
-                p.leftChild = newNode;
+                node.leftChild = newNode;
                 inputQueue.enQueue(newNode);
             }
 
-            System.out.println("Enter right child for: " + p.data + "\n");
+            System.out.println("Enter right child for: " + node.data + "\n");
             x = scan.nextInt();
             if (x != -1) {
                 newNode = new Node();
                 newNode.data = x;
                 newNode.leftChild = newNode.rightChild = null;
-                p.rightChild = newNode;
+                node.rightChild = newNode;
                 inputQueue.enQueue(newNode);
             }
         }
     }
 
-    //Tree traversal: pre-order, in-order, iterative
+    //Tree traversal: Recursion
     public void preorder() {
         preorder(root);
     }
@@ -81,9 +82,9 @@ public class Tree {
 
     public void inorder(Node node) {
         if (node != null) {
-            postorder(node.leftChild);
+            inorder(node.leftChild);
             System.out.println(node.data);
-            postorder(node.rightChild);
+            inorder(node.rightChild);
         }
     }
 
@@ -91,17 +92,49 @@ public class Tree {
         levelorder(root);
     }
 
-    public void levelorder(Node root) {
+    public void levelorder(Node node) {
         Queue queue = new Queue();
-        System.out.println(root.data);
-        queue.enQueue(root);
+        System.out.println(node.data);
+        queue.enQueue(node);
         while (!queue.isEmpty()) {
-            root = queue.deQueue();
-            if (root.leftChild != null) {
-                queue.enQueue(root.leftChild);
+            node = queue.deQueue();
+            if (node.leftChild != null) {
+                System.out.println(node.data);
+                queue.enQueue(node.leftChild);
             }
-            if (root.rightChild != null) {
-                queue.enQueue(root.rightChild);
+            if (node.rightChild != null) {
+                System.out.println(node.data);
+                queue.enQueue(node.rightChild);
+            }
+        }
+    }
+
+    //Tree traversal: Iterative
+    public void preorderIterative(){
+        preorderIterative(root);
+    }
+
+    public void preorderIterative(Node node) {
+        Stack<Node> stackNodes = new Stack<>();
+        System.out.println(node.data);
+        stackNodes.push(node);
+
+        while (!stackNodes.empty()) {
+            if (node.leftChild != null) {
+                node = node.leftChild;
+                System.out.println(node.data);
+                stackNodes.push(node);
+            } else {
+                node = stackNodes.pop();
+                if (node.rightChild != null) {
+                    node = node.rightChild;
+                    System.out.println(node.data);
+                    stackNodes.push(node);
+                } else {
+                    node = stackNodes.pop();
+                    node = node.rightChild;
+                    System.out.println(node.data);
+                }
             }
         }
     }

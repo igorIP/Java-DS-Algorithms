@@ -7,10 +7,12 @@ public class App {
         Tree myTree = new Tree();
         myTree.create();
         //myTree.preorder(myTree.root);
-        myTree.postorder();
+        //myTree.postorder();
         //myTree.inorder(myTree.root);
         //myTree.levelorder(myTree.root);
         //System.out.println(myTree.height(myTree.root));
 
+        //Iterative
+        myTree.preorderIterative();
     }
 }
