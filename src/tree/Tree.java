@@ -110,31 +110,21 @@ public class Tree {
     }
 
     //Tree traversal: Iterative
-    public void preorderIterative(){
+    public void preorderIterative() {
         preorderIterative(root);
     }
 
     public void preorderIterative(Node node) {
         Stack<Node> stackNodes = new Stack<>();
-        System.out.println(node.data);
-        stackNodes.push(node);
 
-        while (!stackNodes.empty()) {
-            if (node.leftChild != null) {
-                node = node.leftChild;
+        while (node != null || !stackNodes.empty()) {
+            if (node != null) {
                 System.out.println(node.data);
                 stackNodes.push(node);
+                node = node.leftChild;
             } else {
                 node = stackNodes.pop();
-                if (node.rightChild != null) {
-                    node = node.rightChild;
-                    System.out.println(node.data);
-                    stackNodes.push(node);
-                } else {
-                    node = stackNodes.pop();
-                    node = node.rightChild;
-                    System.out.println(node.data);
-                }
+                node = node.rightChild;
             }
         }
     }
