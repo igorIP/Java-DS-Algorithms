@@ -20,5 +20,8 @@ public class App {
         //System.out.println(myTree.countNodeWithdegreeTwo());
         //System.out.println(myTree.sumData());
         //System.out.println(myTree.sumData());
+        //System.out.println(myTree.countLeafNodes());
+        //System.out.println(myTree.countNodeWithLeafs());
+        System.out.println(myTree.countS());
     }
 }

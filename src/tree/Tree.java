@@ -188,6 +188,19 @@ public class Tree {
         return 0;
     }
 
+    //Count nodes in tree simple version
+    public int countS() {
+        return count(root);
+    }
+
+
+    private int countS(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return countS(node.leftChild) + countS(node.rightChild) + 1;
+    }
+
     //Count only nodes with degree two(only nodes who have 2 childes)
 
     public int countNodeWithdegreeTwo() {
@@ -215,13 +228,53 @@ public class Tree {
         return sumData(root);
     }
 
-
     private int sumData(Node node) {
         int x, y;
         if (node != null) {
             x = sumData(node.leftChild);
             y = sumData(node.rightChild);
             return x + y + node.data;
+        }
+        return 0;
+    }
+
+    //Count Leaf Nodes
+
+    public int countLeafNodes() {
+        return countLeafNodes(root);
+    }
+
+    private int countLeafNodes(Node node) {
+        int x, y;
+        if (node != null) {
+            x = countLeafNodes(node.leftChild);
+            y = countLeafNodes(node.rightChild);
+            if (node.leftChild == null && node.rightChild == null) {
+                return x + y + 1;
+            } else {
+                return x + y;
+            }
+        }
+        return 0;
+    }
+
+    //Count only Nodes who have at least one degree one
+    //  (don't count nodes with degree 0)
+
+    public int countNodeWithLeafs() {
+        return countNodeWithLeafs(root);
+    }
+
+    private int countNodeWithLeafs(Node node) {
+        int x, y;
+        if (node != null) {
+            x = countNodeWithLeafs(node.leftChild);
+            y = countNodeWithLeafs(node.rightChild);
+            if (node.leftChild != null || node.rightChild != null) {
+                return x + y + 1;
+            } else {
+                return x + y;
+            }
         }
         return 0;
     }
