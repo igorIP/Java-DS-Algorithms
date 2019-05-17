@@ -114,7 +114,7 @@ public class Tree {
         preorderIterative(root);
     }
 
-    public void preorderIterative(Node node) {
+    private void preorderIterative(Node node) {
         Stack<Node> stackNodes = new Stack<>();
 
         while (node != null || !stackNodes.empty()) {
@@ -129,15 +129,100 @@ public class Tree {
         }
     }
 
-    //for refactoring
-//    public int height(Node root) {
-//        int x = 0;
-//        int y = 0;
-//        if (root == null) return 0;
-//        x = height(root.leftChild);
-//        y = height(root.rightChild);
-//        if (x > y) return x + 1;
-//        else return y + 1;
-//    }
+    public void inorderIterative() {
+        inorderIterative(root);
+    }
 
+    private void inorderIterative(Node node) {
+        Stack<Node> stackNodes = new Stack<>();
+
+        while (node != null || !stackNodes.empty()) {
+            if (node != null) {
+                stackNodes.push(node);
+                node = node.leftChild;
+            } else {
+                node = stackNodes.pop();
+                System.out.println(node.data);
+                node = node.rightChild;
+            }
+        }
+    }
+
+    public void levelorderIterative() {
+        levelorderIterative(root);
+    }
+
+    private void levelorderIterative(Node node) {
+        Queue queue = new Queue();
+
+        System.out.println(node.data);
+        queue.enQueue(node);
+
+        while (!queue.isEmpty()) {
+            node = queue.deQueue();
+            if (node.leftChild != null) {
+                System.out.println(node.leftChild.data);
+                queue.enQueue(node.leftChild);
+            }
+            if (node.rightChild != null) {
+                System.out.println(node.rightChild.data);
+                queue.enQueue(node.rightChild);
+            }
+        }
+    }
+
+
+    //Count nodes in tree
+    public int count() {
+        return count(root);
+    }
+
+
+    private int count(Node node) {
+        int x, y;
+        if (node != null) {
+            x = count(node.leftChild);
+            y = count(node.rightChild);
+            return x + y + 1;
+        }
+        return 0;
+    }
+
+    //Count only nodes with degree two(only nodes who have 2 childes)
+
+    public int countNodeWithdegreeTwo() {
+        return countNodeWithdegreeTwo(root);
+    }
+
+
+    private int countNodeWithdegreeTwo(Node node) {
+        int x, y;
+        if (node != null) {
+            x = countNodeWithdegreeTwo(node.leftChild);
+            y = countNodeWithdegreeTwo(node.rightChild);
+            if (node.leftChild != null && node.rightChild != null) {
+                return x + y + 1;
+            } else {
+                return x + y;
+            }
+        }
+        return 0;
+    }
+
+    //Sum of data in all nodes in tree
+
+    public int sumData() {
+        return sumData(root);
+    }
+
+
+    private int sumData(Node node) {
+        int x, y;
+        if (node != null) {
+            x = sumData(node.leftChild);
+            y = sumData(node.rightChild);
+            return x + y + node.data;
+        }
+        return 0;
+    }
 }

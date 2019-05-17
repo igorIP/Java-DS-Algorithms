@@ -6,13 +6,19 @@ public class App {
 
         Tree myTree = new Tree();
         myTree.create();
-        //myTree.preorder(myTree.root);
+        //myTree.preorder();
         //myTree.postorder();
-        //myTree.inorder(myTree.root);
-        //myTree.levelorder(myTree.root);
-        //System.out.println(myTree.height(myTree.root));
+        //myTree.inorder();
+        //myTree.levelorder();
 
         //Iterative
-        myTree.preorderIterative();
+        //myTree.preorderIterative();
+        //myTree.inorderIterative();
+        //myTree.levelorderIterative();
+
+        //System.out.println(myTree.count());
+        //System.out.println(myTree.countNodeWithdegreeTwo());
+        //System.out.println(myTree.sumData());
+        //System.out.println(myTree.sumData());
     }
 }
