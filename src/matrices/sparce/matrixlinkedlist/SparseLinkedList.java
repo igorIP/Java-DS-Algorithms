@@ -9,17 +9,17 @@ public class SparseLinkedList {
     private Node[] sparseRows;
 
     public SparseLinkedList(int numOfSparseRows, int numOfSparseColumns, int numNonZeroElements) {
-        this.numOfSparseRows = numOfSparseRows ;
-        this.numOfSparseColumns = numOfSparseColumns ;
+        this.numOfSparseRows = numOfSparseRows;
+        this.numOfSparseColumns = numOfSparseColumns;
         this.numNonZeroElements = numNonZeroElements;
-        this.sparseRows = new Node[numOfSparseRows+1];
+        this.sparseRows = new Node[numOfSparseRows];
     }
 
     public void createNonZeroElement() {
         int rowNum, columnNum, elValue;
         Scanner scan = new Scanner(System.in);
 
-        for (int i = 1; i <= numNonZeroElements; i++) {
+        for (int i = 0; i < numNonZeroElements; i++) {
 
             System.out.println("Enter element row number: ");
             rowNum = scan.nextInt();
@@ -45,9 +45,9 @@ public class SparseLinkedList {
 
     public void display() {
         Node temp = new Node();
-        for (int i = 1; i <= numOfSparseRows; i++) {
+        for (int i = 1; i < numOfSparseRows; i++) {
             temp = sparseRows[i];
-            for (int j = 1; j <= numOfSparseColumns; j++) {
+            for (int j = 1; j < numOfSparseColumns; j++) {
                 if (temp == null || j != temp.column) {
                     System.out.print("0 ");
                 } else {
